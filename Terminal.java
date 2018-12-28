@@ -14,24 +14,29 @@ public class Terminal extends Thread {
     }
 
     @Override
-    public void run () {
+    public void run() {
 
         switch (operation) {
             case 1: {
                 // view
                 for (int i = 0; i < nOperations; i++) {
-                    synchronized (account) {System.out.println(getName() + " " + i + "  Total: " + account.getTotal());}
+                    synchronized (account) {
+                        System.out.println(getName() + " " + i + "  Total: " + account.getTotal());
+                    }
                     try {
                         Thread.sleep(200);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                break;
             }
             case 2: {
                 // add
                 for (int i = 0; i < nOperations; i++) {
-                    synchronized (account) {account.addSum(1);}
+                    synchronized (account) {
+                        account.addSum(1);
+                    }
                     System.out.println(getName() + " " + i + "  Adding successfull. Total: " + account.getTotal());
                     try {
                         Thread.sleep(100);
@@ -39,19 +44,25 @@ public class Terminal extends Thread {
                         e.printStackTrace();
                     }
                 }
+                break;
             }
             case 3: {
                 // remove
                 for (int i = 0; i < nOperations; i++) {
-                    synchronized (account) {account.remSum(1);}
-                    System.out.println(getName() + " " + i + "  Removing successfull. Total: " + account.getTotal());}
+                    synchronized (account) {
+                        account.remSum(1);
+                    }
+                    System.out.println(getName() + " " + i + "  Removing successfull. Total: " + account.getTotal());
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
+                break;
             }
         }
     }
+
+}
 
