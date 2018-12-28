@@ -7,6 +7,7 @@ public class Terminal extends Thread {
     private int operation = 0;
     private int nOperations = 10;
     private Account account;
+    private final int SLEEP = 100; // milliseconds
 
     public Terminal(int operation, Account account) {
         this.operation = operation;
@@ -24,7 +25,7 @@ public class Terminal extends Thread {
                         System.out.println(getName() + " " + i + "  Total: " + account.getTotal());
                     }
                     try {
-                        Thread.sleep(200);
+                        Thread.sleep(SLEEP);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -39,7 +40,7 @@ public class Terminal extends Thread {
                     }
                     System.out.println(getName() + " " + i + "  Adding successfull. Total: " + account.getTotal());
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(SLEEP);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -58,7 +59,7 @@ public class Terminal extends Thread {
                         }
                     }
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(SLEEP);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
