@@ -50,9 +50,13 @@ public class Terminal extends Thread {
                 // remove
                 for (int i = 0; i < nOperations; i++) {
                     synchronized (account) {
-                        account.remSum(1);
+                        if (account.getTotal() > 0) {
+                            account.remSum(1);
+                            System.out.println(getName() + " " + i + "  Removing successfull. Total: " + account.getTotal());
+                        } else {
+                            System.out.println(getName() + " " + i + "  Removing impossible, waiting. Total: " + account.getTotal());
+                        }
                     }
-                    System.out.println(getName() + " " + i + "  Removing successfull. Total: " + account.getTotal());
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
